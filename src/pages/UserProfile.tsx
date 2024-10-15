@@ -1,17 +1,13 @@
 import { useParams } from 'react-router-dom';
-import Container from '../components/Container/Container';
-import SortActionsList from '../components/SortActionsList/SortActionsList';
+import Layout from '../components/Layout/Layout';
 import UserEditor from '../components/UserEditor/UserEditor';
 
 const UserProfilePage: React.FC = () => {
     const { id } = useParams();
     return (
-        <>
-            <Container>
-                <SortActionsList/>
-                <UserEditor id={id}/>
-            </Container>
-        </>
+        <Layout>
+            <UserEditor id={id}/>
+        </Layout>
     )
 }
 

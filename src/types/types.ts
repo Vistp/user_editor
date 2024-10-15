@@ -1,4 +1,4 @@
-export interface ContainerProps {
+export interface WrapperProps {
     children: React.ReactNode;
 }
 
