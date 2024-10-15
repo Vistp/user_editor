@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.UserItemWrapper {
+    .UserInfo:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    span {
+        color: $text-color-gray;
+    }
+}
+
+.DetailsButton {
+    cursor: pointer;
+    align-self: flex-end;
+    border: none;
+    color: $button-purple;
+    font-size: 12px;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}

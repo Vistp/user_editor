@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color: rgba(255, 255, 255, 0.87); */
+  background-color: #F0F0F0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,7 +13,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+
+
+/* styles/reset.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -65,4 +91,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

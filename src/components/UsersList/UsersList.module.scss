@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.UsersListWrapper {
+    width: 512px;
+    padding: 20px 46px 24px;
+    background-color: $background-list;
+    border-radius: 8px;
+    color: $text-color-black;
+    font-size: 11px;
+    line-height: 13px;
+
+    .UserListTitle {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 16px;
+    }
+    
+    .UsersList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .UserListItem {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: $background-card;
+        border-radius: 8px;
+        
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    }
+
+    .UserListInfo {
+        text-align: right;
+        margin-top: 10px;
+    }
+}

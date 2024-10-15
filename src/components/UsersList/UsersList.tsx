@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import UserItem from './UserItem';
-import { User } from '../types/types';
+import UserItem from '../UserItem/UserItem';
+import { User } from '../../types/types';
+import s from './UsersList.module.scss';
 
 const UsersList: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
@@ -18,7 +19,11 @@ const UsersList: React.FC = () => {
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {
-                setError(error.message);
+                if (error instanceof Error) {
+                    setError(error.message);
+                } else {
+                    setError('Произошла неизвестная ошибка');
+                }
             } finally {
                 setLoader(false);
             }
@@ -34,14 +39,15 @@ const UsersList: React.FC = () => {
     }
 
     return (
-        <>
-            <h1>Список пользователей</h1>
-            <ul>
+        <div className={s.UsersListWrapper}>
+            <h1 className={s.UserListTitle}>Список пользователей</h1>
+            <ul className={s.UsersList}>
                 {users.map((el) => (
-                    <li key={el.id}><UserItem {...el} /></li>
+                    <li key={el.id} className={s.UserListItem}><UserItem {...el} /></li>
                 ))}
             </ul>
-        </>
+            <p className={s.UserListInfo}>Найдено {users.length} пользователей</p>
+        </div>
     )
 }
 
