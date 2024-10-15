@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import UserItem from '../UserItem/UserItem';
 import { User } from '../../types/types';
 import s from './UsersList.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { setUsers } from '../../features/usersSlice';
 
 const UsersList: React.FC = () => {
-    const [users, setUsers] = useState<User[]>([]);
+    const dispatch = useDispatch();
+    const users = useSelector((state: RootState) => state.users.users);
     const [loader, setLoader] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -17,7 +21,7 @@ const UsersList: React.FC = () => {
                     throw new Error('Произошла ошибка загрузки данных')
                 }
                 const data = await response.json();
-                setUsers(data);
+                dispatch(setUsers(data));
             } catch (error) {
                 if (error instanceof Error) {
                     setError(error.message);
@@ -29,7 +33,7 @@ const UsersList: React.FC = () => {
             }
         };
         getUsers();
-    }, []);
+    }, [dispatch]);
 
     if (loader) {
         return <p>Загрузка...</p>
@@ -42,7 +46,7 @@ const UsersList: React.FC = () => {
         <div className={s.UsersListWrapper}>
             <h1 className={s.UserListTitle}>Список пользователей</h1>
             <ul className={s.UsersList}>
-                {users.map((el) => (
+                {users.map((el: User) => (
                     <li key={el.id} className={s.UserListItem}><UserItem {...el} /></li>
                 ))}
             </ul>
