@@ -27,8 +27,11 @@ const usersSlice = createSlice({
                 return aValue.localeCompare(bValue);
             });
         },
+        editUser(state, action: PayloadAction<User>) {
+            console.log('Измененные данные пользователя:', action.payload);
+        },
     },
 });
 
-export const { setUsers, sortUsers } = usersSlice.actions;
+export const { setUsers, sortUsers, editUser } = usersSlice.actions;
 export default usersSlice.reducer;
