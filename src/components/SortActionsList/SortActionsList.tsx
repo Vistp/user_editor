@@ -1,8 +1,16 @@
+import Button from '../Button/Button';
+import s from './SortActionsList.module.scss'
+
 const SortActionsList: React.FC = () => {
+    const handleSort = () => {
+        console.log('Любая кнопка');
+    }
     return (
-        <>
-            <h2>Сортировка</h2>
-        </>
+        <div className={s.SortActionsList}>
+            <h2 className={s.SortActionsTitle}>Сортировка</h2>
+            <Button onClick={handleSort} title={'по городу'} className={s.SortAction}/>
+            <Button onClick={handleSort} title={'по компании'} className={s.SortAction}/>
+        </div>
     )
 }
 
