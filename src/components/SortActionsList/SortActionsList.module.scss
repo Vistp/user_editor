@@ -7,16 +7,16 @@
     align-items: flex-start;
     padding: 35px 20px;
     background-color: $background-sort;
+}
 
-    .SortActionsTitle {
-        font-size: 12px;
-    }
+.SortActionsTitle {
+    font-size: 12px;
+}
 
-    .SortAction {
-        margin-top: 10px;        
-    }
+.SortAction {
+    margin-top: 10px;
+}
 
-    .active {
-        opacity: 0.8;
-    }
+.active {
+    opacity: 0.8;
 }
