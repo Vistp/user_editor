@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import { User } from '../../types/types';
 import { editUser } from '../../features/usersSlice';
+import s from '../UserEditor/UserEditor.module.scss';
 
 interface UserEditorProps {
     id: string | undefined;
@@ -63,90 +64,104 @@ const UserEditor: React.FC<UserEditorProps> = ({ id }) => {
     }
 
     return (
-        <div>
-            <h2>Профиль пользователя {id}</h2>
-            <Button onClick={() => setIsEditing(true)} title={'Редактировать'} />
+        <div className={s.UserEditorWrapper}>
+            <div className={s.UserEditorHeader}>
+                <h2 className={s.UserEditorTitle}>Профиль пользователя</h2>
+                <Button 
+                    onClick={() => setIsEditing(true)} 
+                    title={'Редактировать'}
+                    className={s.EditButton}
+                    disabled={isEditing} 
+                />
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label>Name:</label>
-                    <input 
-                        type='text' 
-                        {...register('name', { required: true })} 
-                        style={{ borderColor: errors.name ? 'red' : undefined }} 
-                        disabled={!isEditing} 
-                    />
+                <div className={s.InputsWrapper}>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Name:</label>
+                        <input 
+                            type='text' 
+                            {...register('name', { required: true })} 
+                            className={`${s.InputField} ${errors.name ? s.Error : ''}`} 
+                            disabled={!isEditing} 
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>User Name:</label>
+                        <input 
+                            type='text' 
+                            {...register('username', { required: true })} 
+                            className={`${s.InputField} ${errors.username ? s.Error : ''}`}
+                            disabled={!isEditing} 
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Email:</label>
+                        <input 
+                            type='email' 
+                            {...register('email', { required: true })} 
+                            className={`${s.InputField} ${errors.email ? s.Error : ''}`} 
+                            disabled={!isEditing} 
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Street:</label>
+                        <input 
+                            type='text' 
+                            {...register('address.street', { required: true })} 
+                            className={`${s.InputField} ${errors.address?.street ? s.Error : ''}`} 
+                            disabled={!isEditing} 
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>City:</label>
+                        <input 
+                            type='text' 
+                            {...register('address.city', { required: true })} 
+                            className={`${s.InputField} ${errors.address?.city ? s.Error : ''}`}
+                            disabled={!isEditing}
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Zip Code:</label>
+                        <input 
+                            type='text' 
+                            {...register('address.zipcode', { required: true })} 
+                            className={`${s.InputField} ${errors.address?.zipcode ? s.Error : ''}`}
+                            disabled={!isEditing}
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Phone:</label>
+                        <input 
+                            type='text' 
+                            {...register('phone', { required: true })} 
+                            className={`${s.InputField} ${errors.phone ? s.Error : ''}`}
+                            disabled={!isEditing}
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Website:</label>
+                        <input 
+                            type='text' 
+                            {...register('website', { required: true })}  
+                            className={`${s.InputField} ${errors.website ? s.Error : ''}`}
+                            disabled={!isEditing}
+                        />
+                    </div>
+                    <div className={s.InputGroup}>
+                        <label className={s.Label}>Comment:</label>
+                        <textarea 
+                            {...register('comment')}
+                            className={s.CommentTextarea}
+                            disabled={!isEditing}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label>User Name:</label>
-                    <input 
-                        type='text' 
-                        {...register('username', { required: true })} 
-                        style={{ borderColor: errors.username ? 'red' : undefined }} 
-                        disabled={!isEditing} 
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input 
-                        type='email' 
-                        {...register('email', { required: true })} 
-                        style={{ borderColor: errors.email ? 'red' : undefined }} 
-                        disabled={!isEditing} 
-                    />
-                </div>
-                <div>
-                    <label>Street:</label>
-                    <input 
-                        type='text' 
-                        {...register('address.street', { required: true })} 
-                        style={{ borderColor: errors.address?.street ? 'red' : undefined }} 
-                        disabled={!isEditing} 
-                    />
-                </div>
-                <div>
-                    <label>City:</label>
-                    <input 
-                        type='text' 
-                        {...register('address.city', { required: true })} 
-                        style={{ borderColor: errors.address?.city ? 'red' : undefined }}
-                        disabled={!isEditing}
-                    />
-                </div>
-                <div>
-                    <label>Zip Code:</label>
-                    <input 
-                        type='text' 
-                        {...register('address.zipcode', { required: true })} 
-                        style={{ borderColor: errors.address?.zipcode ? 'red' : undefined }}
-                        disabled={!isEditing}
-                    />
-                </div>
-                <div>
-                    <label>Phone:</label>
-                    <input 
-                        type='text' 
-                        {...register('phone', { required: true })} 
-                        style={{ borderColor: errors.phone ? 'red' : undefined }}
-                        disabled={!isEditing}
-                    />
-                </div>
-                <div>
-                    <label>Website:</label>
-                    <input 
-                        type='text' 
-                        {...register('website', { required: true })}  
-                        style={{ borderColor: errors.website ? 'red' : undefined }}
-                        disabled={!isEditing}
-                    />
-                </div>
-                <div>
-                    <label>Comment:</label>
-                    <textarea 
-                        {...register('comment')}
-                        disabled={!isEditing}
-                    />
-                </div>       
-                <button type='submit' disabled={!isEditing}>Сохранить изменения</button>
+                <Button
+                    title='Отправить'
+                    className={!isEditing ? `${s.Disabled}` : `${s.SaveButton}`}
+                    disabled={!isEditing} 
+                />
             </form>
         </div>
     );

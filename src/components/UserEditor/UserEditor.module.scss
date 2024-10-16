@@ -1,0 +1,89 @@
+@import '../../styles/variables.scss';
+
+.UserEditorWrapper {
+    width: 512px;
+    background-color: $background-list;
+    padding: 14px 36px;
+}
+
+.UserEditorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.UserEditorTitle {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.EditButton {
+    &:disabled {
+        opacity: 1;
+        cursor: auto;
+    }
+}
+
+.InputsWrapper {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    padding: 20px 6px 20px 12px;
+    border: 1px solid $background-card;
+    border-radius: 8px;
+}
+
+.InputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.Label {
+    margin-bottom: 2px;
+    font-size: 8px;
+    color: $text-color-black;
+}
+
+.InputField {
+    width: 210px;
+    height: 22px;
+    margin-bottom: 10px;
+    padding: 4px 8px;
+    font-size: 10px;
+    color: $text-color-black;
+    background-color: $background-list;
+    border: 1px solid $border-input;
+    border-radius: 5px;
+    outline: none;
+
+    &:disabled {
+        color: $border-input;
+    }
+}
+
+.Error {
+    border: 1px solid $border-invalid-input;
+}
+
+.CommentTextarea {
+    height: 54px;
+    border: 1px solid $border-input;
+    border-radius: 5px;
+    background-color: $background-list;
+    outline: none;
+    resize: none;
+}
+
+.SaveButton {
+    background-color: $button-active;
+    float: right;
+}
+
+.Disabled {
+    background-color: $button-disabled;
+    float: right;
+
+    &:hover {
+        opacity: 1;
+        cursor: auto;
+    }
+}
